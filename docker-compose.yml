@@ -1,0 +1,21 @@
+services:
+  test:
+    restart: always
+    build:
+      context: ./template
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - NAME=template
+    volumes:
+      - ./template:/template
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
