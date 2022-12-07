@@ -12,10 +12,12 @@ services:
     environment:
       - DB_CONTAINER_NAME=${DB_NAME}
       - PORT=${AUTH_PORT}
+      - NAME=${AUTH_NAME}
     ports:
       - ${AUTH_PORT}:${AUTH_PORT}
     volumes:
       - ./${AUTH_NAME}:/${AUTH_NAME}
+      - /${AUTH_NAME}/node_modules
     depends_on:
       - mongo
   user-service:
@@ -31,6 +33,7 @@ services:
     environment:
       - DB_CONTAINER_NAME=${DB_NAME}
       - PORT=${USER_PORT}
+      - NAME=${USER_NAME}
     ports:
       - ${USER_PORT}:${USER_PORT}
     volumes:
