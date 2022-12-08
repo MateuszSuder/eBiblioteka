@@ -51,6 +51,7 @@ services:
       - ${USER_PORT}:${USER_PORT}
     volumes:
       - ./${USER_NAME}:/${USER_NAME}
+      - /${USER_NAME}/node_modules
     depends_on:
       - mongo
   book-service:
