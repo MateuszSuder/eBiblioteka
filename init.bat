@@ -14,6 +14,10 @@ IF not exist reservation-service (
     git clone https://github.com/MateuszSuder/eBiblioteka-reservation reservation-service
 )
 
+IF not exist borrowing-service (
+    git clone https://github.com/MateuszSuder/eBiblioteka-borrowing borrowing-service
+)
+
 IF not exist notification-service (
     git clone https://github.com/MateuszSuder/eBiblioteka-notification notification-service
 )
