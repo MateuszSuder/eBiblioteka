@@ -138,6 +138,22 @@ services:
       - /${NOTIFICATION_NAME}/node_modules
     depends_on:
       - mongo
+  frontend:
+    container_name: ${FRONTEND_NAME}
+    build:
+      context: ./${FRONTEND_NAME}
+      args:
+        PORT: ${FRONTEND_PORT}
+        NAME: ${FRONTEND_NAME}
+    environment:
+      - PORT=${FRONTEND_PORT}
+      - NAME=${FRONTEND_NAME}
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    volumes:
+      - ./${FRONTEND_NAME}:/${FRONTEND_NAME}:delegated
+      - /node_modules
   mongo:
     container_name: ${DB_NAME}
     restart: always
