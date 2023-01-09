@@ -7,11 +7,11 @@ set list=auth user book reservation borrowing notification
         npm i
         cd ..
     )
-))
-
-IF not exist frontend (
-    git clone https://github.com/MateuszSuder/eBiblioteka-frontend frontend
-    cd frontend
-    npm i
-    cd ..
+)
+    IF not exist frontend (
+        git clone https://github.com/MateuszSuder/eBiblioteka-frontend frontend
+        cd frontend
+        npm i
+        cd ..
+    )
 )
