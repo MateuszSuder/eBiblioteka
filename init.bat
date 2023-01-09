@@ -1,23 +1,17 @@
-IF not exist auth-service (
-    git clone https://github.com/MateuszSuder/eBiblioteka-auth auth-service
-)
+set list=auth user book reservation borrowing notification
 
-IF not exist user-service (
-    git clone https://github.com/MateuszSuder/eBiblioteka-user user-service
-)
+(for %%a in (%list%) do (
+    IF not exist %%a-service (
+        git clone https://github.com/MateuszSuder/eBiblioteka-%%a %%a-service
+        cd %%a-service
+        npm i
+        cd ..
+    )
+))
 
-IF not exist book-service (
-    git clone https://github.com/MateuszSuder/eBiblioteka-book book-service
-)
-
-IF not exist reservation-service (
-    git clone https://github.com/MateuszSuder/eBiblioteka-reservation reservation-service
-)
-
-IF not exist borrowing-service (
-    git clone https://github.com/MateuszSuder/eBiblioteka-borrowing borrowing-service
-)
-
-IF not exist notification-service (
-    git clone https://github.com/MateuszSuder/eBiblioteka-notification notification-service
+IF not exist frontend (
+    git clone https://github.com/MateuszSuder/eBiblioteka-frontend frontend
+    cd frontend
+    npm i
+    cd ..
 )
